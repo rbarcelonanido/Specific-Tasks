@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dog Selection</title>
+</head>
+<body>
+
+<script>
+
+// Create a constructor function for a dog object
+function Dog(Name, Breed, Claim_To_Fame, My_Sound, Can_Talk) {
+  this.Name = Name;
+  this.Breed = Breed;
+  this.Claim_To_Fame = Claim_To_Fame;
+  this.My_Sound = My_Sound;
+  this.Can_Talk = Can_Talk;
+
+  // Create an object method
+  this.myGreeting = function() {
+    return "Hello, my name is " + this.Name + ". " + this.Claim_To_Fame + " " + this.My_Sound + (this.Can_Talk ? " I can talk!" : " I cannot talk.");
+  }
+}
+
+// Create two new dog objects using the constructor
+var dog1 = new Dog("Pete", "American Pitbull Terrier", "I starred in the comedy short film, The Little Rascals. My character was an American Pitbull Terrier. I was the family dog in a comedy short film about a group of poor neighborhood children and their adventures.", "When you hear me bark, you should be scared.", true);
+
+var dog2 = new Dog("Cosmo", "Golden Retriever", "I starred in a movie called Guardians of the Galaxy Vol. 3. My character was a Golden Retriever-Labrador Retriever mix spacedog, on a mission to defend the universe with a team of superheroes.", "When I bark, it means I want to play!", true);
+
+// Prompt the user to select a dog (Pete or Cosmo)
+var userInput = prompt("Select a dog by typing its name (Pete or Cosmo):");
+
+// Check the user input and display the selected dogs information
+var selectedDog;
+
+if (userInput === "Pete") {
+  selectedDog = dog1;
+} else if (userInput === "Cosmo") {
+  selectedDog = dog2;
+} else {
+  alert("Invalid input. The selected dog does not exist.");
+}
+
+// Display the selected dog's information
+if (selectedDog) {
+  document.write("<h2><u>Dog Selected</u></h2>");
+  for (var prop in selectedDog) {
+    if (selectedDog.hasOwnProperty(prop) && typeof selectedDog[prop] !== 'function') {
+      document.write("<p><strong>" + prop + ":</strong> " + selectedDog[prop] + "</p>");
+    }
+  }
+
+  // Display the selected dog's greeting message
+  document.write("<p>" + selectedDog.myGreeting() + "</p>");
+}
+</script>
+
+</body>
+</html>
